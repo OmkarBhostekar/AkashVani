@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { setMainStream, updateUser } from "../store/actioncreator";
 import Footer from "./Footer";
 import Participants from "./Participants";
+import EndCallDialog from "./EndCallDialog";
 
 const Call = (props) => {
   const participantRef = useRef(props.participants);
@@ -71,8 +72,12 @@ const Call = (props) => {
 
     props.updateUser({ screen: true });
   };
+
+  const [endDialogOpen, setEndDialogOpen] = useState(false);
+
   return (
     <div className="w-full h-full">
+      <EndCallDialog open={endDialogOpen} setOpen={setEndDialogOpen} />
       <div className="h-[90vh] w-full bg-[#3c4043]">
         <Participants />
       </div>
@@ -82,6 +87,7 @@ const Call = (props) => {
           onScreenClick={onScreenClick}
           onMicClick={onMicClick}
           onVideoClick={onVideoClick}
+          onCallEnd={() => setEndDialogOpen(true)}
         />
       </div>
     </div>

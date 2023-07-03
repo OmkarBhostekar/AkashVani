@@ -11,7 +11,9 @@ export const db = firebase;
 
 var firepadRef = firebase.database().ref();
 
-export const userName = prompt("What's your name?");
+export const userName = window.location.pathname.includes("room")
+  ? prompt("Enter your name")
+  : "User " + Math.floor(Math.random() * 1000) + 1;
 const urlparams = new URLSearchParams(window.location.search);
 const roomId = urlparams.get("id");
 
@@ -19,7 +21,9 @@ if (roomId) {
   firepadRef = firepadRef.child(roomId);
 } else {
   firepadRef = firepadRef.push();
-  window.history.replaceState(null, "Meet", "?id=" + firepadRef.key);
+  if (window.location.pathname.includes("room")) {
+    window.history.replaceState(null, "Meet", "?id=" + firepadRef.key);
+  }
 }
 
 export default firepadRef;
