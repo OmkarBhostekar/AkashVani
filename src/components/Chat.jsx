@@ -44,13 +44,13 @@ const Chat = ({
     setMessage("");
   };
   const selectedClass =
-    "flex justify-center items-center w-full text-green-800 border-b-2 py-2 hover:bg-[#eee] cursor-pointer border-green-800";
+    "flex justify-center items-center w-full text-primary border-b-4 border-b-primary py-4 hover:bg-[#0f111c] cursor-pointer border-green-800";
   const unSelectedClass =
-    "flex justify-center items-center w-full text-[#555] py-2 hover:bg-[#eee] cursor-pointer";
+    "flex justify-center items-center w-full py-4 border-b-2 border-onsecondary hover:bg-[#0f111c] cursor-pointer";
 
   return (
-    <div className="h-full flex w-96 flex-col justify-between bg-white border-2 border-b-[#eee]">
-      <div className="p-6 flex items-center justify-between mx-2">
+    <div className="h-full flex w-96 flex-col justify-between border-b border-b-primary bg-[#161929] text-onprimary">
+      <div className="px-6 py-5 flex items-center justify-between mx-2 ">
         <h3 className="m-0">Meeting details</h3>
         <FontAwesomeIcon
           className="fa-lg cursor-pointer"
@@ -59,7 +59,7 @@ const Chat = ({
         />
       </div>
 
-      <div className="flex items-center border-b-2 border-[#eee]">
+      <div className="flex items-center">
         <div
           className={!isChatSelected ? selectedClass : unSelectedClass}
           onClick={toggleTab}
@@ -82,7 +82,7 @@ const Chat = ({
               <div key={item.time} className="mb-7">
                 <div className="text-[14px]">
                   {item.sender}{" "}
-                  <small className="ml-1 font-light uppercase text-[#555]">
+                  <small className="ml-1 font-light uppercase text-onsecondary">
                     {new Date(item.time).toLocaleTimeString([], {
                       hour: "2-digit",
                       minute: "2-digit",
@@ -90,23 +90,26 @@ const Chat = ({
                     })}
                   </small>
                 </div>
-                <p className="text-[#555] text-[14px] pt-1">{item.message}</p>
+                <p className="text-onprimary text-[14px] pt-1">
+                  {item.message}
+                </p>
               </div>
             ))}
           </div>
 
-          <div className="p-5 border-t-2 border-t-[#eee] flex items-center justify-between text-[#555]">
+          <div className="pl-5 pr-5 py-3 flex items-center justify-between text-[#555] rounded-full bg-[#1C1F2E] mx-2 mb-1">
             <input
               placeholder="Send a message to everyone"
-              className="p-1 border-0 outline-none border-b-[#eee] w-4/5"
+              className="p-1 border-0 outline-none border-b-primary bg-transparent text-onprimary w-4/5"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
-            <FontAwesomeIcon
-              className="fa-lg"
-              icon={faPaperPlane}
+            <div
+              className="h-10 w-10 bg-primary rounded-full items-center justify-center flex text-onprimary pr-1 cursor-pointer"
               onClick={handleSendMsg}
-            />
+            >
+              <FontAwesomeIcon className="fa-lg" icon={faPaperPlane} />
+            </div>
           </div>
         </div>
       ) : (

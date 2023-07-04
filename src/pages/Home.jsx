@@ -25,22 +25,22 @@ const HomeScreen = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen text-[#E2E2E2]">
       <Header />
       <div className="flex md:flex-row flex-col px-4 items-center justify-around h-full pb-48">
         <div className="flex max-w-[500px]">
           <div className="content">
-            <h2 className="md:text-[40px] text-[32px] font-normal m-0">
+            <h2 className="md:text-[40px] text-[32px] font-normal m-0 text-center">
               Premium video meetings. Now free for everyone.
             </h2>
-            <p className="text-[18px] font-light">
+            <p className="text-[18px] font-light mt-4 text-center">
               We re-engineered the service we built for secure business
               meetings, Google Meet, to make it free and available for all.
             </p>
             <div className="m-10 flex items-center justify-around">
               <button
                 onClick={startCall}
-                className=" cursor-pointer flex items-center justify-center text-[16px] p-3 border-0 bg-green-800 hover:bg-green-900 text-white rounded-md"
+                className=" cursor-pointer flex items-center justify-center text-[16px] p-3 border-0 bg-primary hover:bg-[#124fb2] text-white rounded-md mr-1"
               >
                 <FontAwesomeIcon icon={faVideo} />
                 <span className="pl-2"> New Meeting</span>
@@ -49,18 +49,18 @@ const HomeScreen = () => {
                 <div className=" relative mr-2 ">
                   <FontAwesomeIcon
                     icon={faKeyboard}
-                    className=" absolute top-1/2 text-[#5f6368] transform -translate-y-1/2 left-2"
+                    className=" absolute top-1/2 text-[#dadce0] transform -translate-y-1/2 left-2"
                   />
                   <input
                     value={code}
                     onChange={(e) => setCode(e.target.value)}
                     type="text"
                     placeholder="Enter a code or link"
-                    className="text-[16px] h-12 border-solid border-2 rounded-md border-[#dadce0] pl-10 pr-4 w-full"
+                    className="text-[16px] h-12 bg-darkbg border-solid border rounded-md border-[#dadce0] pl-10 pr-4 w-full"
                   />
                 </div>
                 <div
-                  className="ml-2 text-green-800 font-bold cursor-pointer p-1"
+                  className="ml-2 text-primary font-bold cursor-pointer p-1"
                   onClick={onLinkJoin}
                 >
                   Join

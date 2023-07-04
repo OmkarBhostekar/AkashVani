@@ -29,7 +29,7 @@ export const Participant = (props) => {
         ></video>
         {!currentParticipant.audio && (
           <FontAwesomeIcon
-            className="text-white right-3 top-3 absolute bg-[#353b48] rounded-full h-6 w-6"
+            className="text-white right-3 top-3 absolute bg-secondary rounded-full h-6 w-6 p-2"
             icon={faMicrophoneSlash}
             title="Muted"
           />

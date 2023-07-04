@@ -20,15 +20,15 @@ const Header = () => {
       <div className="flex items-center">
         <FontAwesomeIcon
           icon={faQuestionCircle}
-          className="text-lg p-2 text-[#5f6368] cursor-pointer"
+          className="text-lg p-2 text-[#dadce0] cursor-pointer"
         />
         <FontAwesomeIcon
           icon={faExclamationCircle}
-          className="text-lg p-2 text-[#5f6368] cursor-pointer"
+          className="text-lg p-2 text-[#dadce0] cursor-pointer"
         />
         <FontAwesomeIcon
           icon={faCog}
-          className="text-lg p-2 text-[#5f6368] cursor-pointer"
+          className="text-lg p-2 text-[#dadce0] cursor-pointer"
         />
       </div>
     </div>

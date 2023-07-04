@@ -6,6 +6,7 @@ import Participants from "./Participants";
 import EndCallDialog from "./EndCallDialog";
 import Chat from "./Chat";
 import CallPageHeader from "./CallPageHeader";
+import MeetingInfo from "./MeetingInfo";
 
 const Call = (props) => {
   const participantRef = useRef(props.participants);
@@ -78,6 +79,7 @@ const Call = (props) => {
   const [endDialogOpen, setEndDialogOpen] = useState(false);
   const [isChatVisible, setIsChatVisible] = useState(false);
   const [isChatSelected, setIsChatSelected] = useState(true);
+  const [showMeetingInfo, setShowMeetingInfo] = useState(true);
 
   const onBtnClick = (type) => {
     setIsChatSelected(type === "chat");
@@ -87,7 +89,7 @@ const Call = (props) => {
   return (
     <div className="w-full h-full">
       <EndCallDialog open={endDialogOpen} setOpen={setEndDialogOpen} />
-      <div className="h-[90vh] w-full bg-[#3c4043] flex flex-row">
+      <div className="h-[90vh] w-full bg-darkbg flex flex-row">
         <div className="grow w-full">
           <Participants />
         </div>
@@ -103,15 +105,17 @@ const Call = (props) => {
         </div>
       </div>
 
-      <div className="h-[10vh] w-full">
+      <div className="h-[10vh] w-full bg-[#161929]">
         <Footer
           onScreenClick={onScreenClick}
           onMicClick={onMicClick}
           onVideoClick={onVideoClick}
           onCallEnd={() => setEndDialogOpen(true)}
+          onMeetingInfoClick={() => setShowMeetingInfo(true)}
         />
       </div>
       {!isChatVisible && <CallPageHeader onBtnClick={onBtnClick} />}
+      {showMeetingInfo && <MeetingInfo setMeetInfoPopup={setShowMeetingInfo} />}
     </div>
   );
 };

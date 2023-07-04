@@ -8,6 +8,13 @@ module.exports = withMT({
   ],
   theme: {
     extend: {},
+    colors: {
+      primary: "#1A71FF",
+      secondary: "#FF4949",
+      darkbg: "#1c1f2e",
+      onprimary: "#E2E2E2",
+      onsecondary: "#9E9E9E",
+    },
   },
   plugins: [],
 });

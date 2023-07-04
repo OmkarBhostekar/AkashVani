@@ -9,8 +9,8 @@ import React from "react";
 
 const EndCallDialog = ({ open, setOpen }) => {
   return (
-    <Dialog size="sm" open={open}>
-      <DialogHeader className="text-xl">
+    <Dialog size="sm" open={open} className="bg-[#161929]">
+      <DialogHeader className="text-xl text-onprimary">
         Do you want to end this call?
       </DialogHeader>
       <DialogFooter>
@@ -22,7 +22,7 @@ const EndCallDialog = ({ open, setOpen }) => {
         >
           <span>Cancel</span>
         </Button>
-        <Button variant="gradient" color="green" onClick={() => window.close()}>
+        <Button variant="gradient" color="blue" onClick={() => window.close()}>
           <span>Confirm</span>
         </Button>
       </DialogFooter>

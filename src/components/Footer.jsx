@@ -59,9 +59,12 @@ const Footer = (props) => {
     props.onVideoClick(streamState.video);
   }, [streamState.video]);
   return (
-    <div className="absolute bottom-0 left-0 w-full flex flex-row items-center justify-center h-[10vh] bg-white z-10">
+    <div className="absolute bottom-0 left-0 w-full flex flex-row items-center justify-center h-[10vh] bg-[#161929] z-10 text-onprimary">
       <div className="flex items-center h-full w-[350px]">
-        <div className="flex items-center justify-center h-full px-4  cursor-pointer hover:bg-[#eee]">
+        <div
+          className="flex items-center justify-center h-full px-4  cursor-pointer hover:bg-[#0f111c] text-onprimary"
+          onClick={props.onMeetingInfoClick}
+        >
           Meeting details
           <FontAwesomeIcon className="fa-md ml-2" icon={faAngleUp} />
         </div>
@@ -69,21 +72,21 @@ const Footer = (props) => {
       <div className="w-full flex items-center justify-center flex-1">
         {streamState.mic ? (
           <div
-            className={`bg-white w-12 h-12 flex items-center justify-center rounded-full mx-2 cursor-pointer shadow-md`}
+            className={`bg-primary  w-12 h-12 flex items-center justify-center rounded-full mx-2 cursor-pointer shadow-md`}
             onClick={micClick}
           >
             <FontAwesomeIcon className="fa-lg" icon={faMicrophone} />
           </div>
         ) : (
           <div
-            className={`bg-red-500 w-12 h-12 flex items-center justify-center rounded-full mx-2 cursor-pointer shadow-md`}
+            className={`bg-secondary  w-12 h-12 flex items-center justify-center rounded-full mx-2 cursor-pointer shadow-md`}
             onClick={micClick}
           >
             <FontAwesomeIcon className="fa-lg" icon={faMicrophoneSlash} />
           </div>
         )}
         <div
-          className="bg-red-500 w-12 h-12 flex items-center justify-center rounded-full mx-2 cursor-pointer shadow-md"
+          className="bg-secondary w-12 h-12 flex items-center justify-center rounded-full mx-2 cursor-pointer shadow-md"
           onClick={() => props.onCallEnd()}
         >
           <FontAwesomeIcon className="fa-lg" icon={faPhone} />
@@ -91,14 +94,14 @@ const Footer = (props) => {
 
         {streamState.video ? (
           <div
-            className={`bg-white w-12 h-12 flex items-center justify-center rounded-full mx-2 cursor-pointer shadow-md`}
+            className={`bg-primary w-12 h-12 flex items-center justify-center rounded-full mx-2 cursor-pointer shadow-md`}
             onClick={onVideoClick}
           >
             <FontAwesomeIcon className="fa-lg" icon={faVideo} />
           </div>
         ) : (
           <div
-            className={`bg-red-500 w-12 h-12 flex items-center justify-center rounded-full mx-2 cursor-pointer shadow-md`}
+            className={`bg-secondary w-12 h-12 flex items-center justify-center rounded-full mx-2 cursor-pointer shadow-md`}
             onClick={onVideoClick}
           >
             <FontAwesomeIcon className="fa-lg" icon={faVideoSlash} />
@@ -119,7 +122,7 @@ const Footer = (props) => {
           </div>
         ) : (
           <div
-            className="flex items-center justify-center flex-col h-full w-[146px] text-[#555] cursor-pointer hover:bg-[#eee]"
+            className="flex items-center justify-center flex-col h-full w-[146px] text-onprimary cursor-pointer hover:bg-[#0f111c]"
             onClick={onScreenClick}
           >
             <FontAwesomeIcon className="fa-lg  mb-1" icon={faDesktop} />
