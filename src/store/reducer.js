@@ -5,6 +5,7 @@ import {
   REMOVE_PARTICIPANT,
   UPDATE_USER,
   UPDATE_PARTICIPANT,
+  ADD_MESSAGE,
 } from "./actiontypes";
 
 import {
@@ -17,6 +18,7 @@ let defaultUserState = {
   mainStream: null,
   participants: {},
   currentUser: null,
+  messages: [],
 };
 
 const servers = {
@@ -98,6 +100,11 @@ export const userReducer = (state = defaultUserState, action) => {
     };
     let participants = { ...state.participants, ...payload.newUser };
     state = { ...state, participants };
+    return state;
+  } else if (action.type === ADD_MESSAGE) {
+    let payload = action.payload;
+    let messages = [...state.messages, payload.message];
+    state = { ...state, messages };
     return state;
   }
   return state;

@@ -5,6 +5,7 @@ import {
   REMOVE_PARTICIPANT,
   UPDATE_USER,
   UPDATE_PARTICIPANT,
+  ADD_MESSAGE,
 } from "./actiontypes";
 
 export const setMainStream = (stream) => {
@@ -57,6 +58,15 @@ export const removeParticipant = (userId) => {
     type: REMOVE_PARTICIPANT,
     payload: {
       id: userId,
+    },
+  };
+};
+
+export const addMessage = (message) => {
+  return {
+    type: ADD_MESSAGE,
+    payload: {
+      message,
     },
   };
 };

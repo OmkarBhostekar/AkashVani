@@ -1,9 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { setMainStream, updateUser } from "../store/actioncreator";
+import { addMessage, setMainStream, updateUser } from "../store/actioncreator";
 import Footer from "./Footer";
 import Participants from "./Participants";
 import EndCallDialog from "./EndCallDialog";
+import Chat from "./Chat";
+import CallPageHeader from "./CallPageHeader";
 
 const Call = (props) => {
   const participantRef = useRef(props.participants);
@@ -74,12 +76,31 @@ const Call = (props) => {
   };
 
   const [endDialogOpen, setEndDialogOpen] = useState(false);
+  const [isChatVisible, setIsChatVisible] = useState(false);
+  const [isChatSelected, setIsChatSelected] = useState(true);
+
+  const onBtnClick = (type) => {
+    setIsChatSelected(type === "chat");
+    setIsChatVisible(!isChatVisible);
+  };
 
   return (
     <div className="w-full h-full">
       <EndCallDialog open={endDialogOpen} setOpen={setEndDialogOpen} />
-      <div className="h-[90vh] w-full bg-[#3c4043]">
-        <Participants />
+      <div className="h-[90vh] w-full bg-[#3c4043] flex flex-row">
+        <div className="grow w-full">
+          <Participants />
+        </div>
+        <div className={`flex-none ${isChatVisible ? "" : "hidden"}`}>
+          <Chat
+            onClose={() => setIsChatVisible(!isChatVisible)}
+            isChatSelected={isChatSelected}
+            messageList={props.messages}
+            addMessage={props.addMessage}
+            toggleTab={() => setIsChatSelected(!isChatSelected)}
+            participants={props.participants}
+          />
+        </div>
       </div>
 
       <div className="h-[10vh] w-full">
@@ -90,6 +111,7 @@ const Call = (props) => {
           onCallEnd={() => setEndDialogOpen(true)}
         />
       </div>
+      {!isChatVisible && <CallPageHeader onBtnClick={onBtnClick} />}
     </div>
   );
 };
@@ -99,6 +121,7 @@ const mapStateToProps = (state) => {
     stream: state.mainStream,
     participants: state.participants,
     currentUser: state.currentUser,
+    messages: state.messages,
   };
 };
 

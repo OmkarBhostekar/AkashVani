@@ -6,6 +6,7 @@ import {
   setUser,
   removeParticipant,
   updateParticipant,
+  addMessage,
 } from "../store/actioncreator";
 import { connect } from "react-redux";
 import Call from "../components/Call";
@@ -46,6 +47,7 @@ function Room(props) {
 
   const connectedRef = db.database().ref(".info/connected");
   const participantRef = firepadRef.child("participants");
+  const chatRef = firepadRef.child("chats");
 
   const isUserSet = !!props.user;
   const isStreamSet = !!props.stream;
@@ -74,12 +76,22 @@ function Room(props) {
       participantRef.on("child_removed", (snap) => {
         props.removeParticipant(snap.key);
       });
+      chatRef.on("child_added", (snap) => {
+        const { sender, message, time } = snap.val();
+        props.addMessage({ sender, message, time });
+      });
     }
   }, [isStreamSet, isUserSet]);
 
+  const pushMessage = (message) => {
+    console.log(message);
+    chatRef.push(message);
+    addMessage(message);
+  };
+
   return (
     <div className="">
-      <Call />
+      <Call addMessage={pushMessage} />
     </div>
   );
 }
@@ -98,6 +110,7 @@ const mapDispatchToProps = (dispatch) => {
     setUser: (user) => dispatch(setUser(user)),
     removeParticipant: (userId) => dispatch(removeParticipant(userId)),
     updateParticipant: (user) => dispatch(updateParticipant(user)),
+    addMessage: (message) => dispatch(addMessage(message)),
   };
 };
 

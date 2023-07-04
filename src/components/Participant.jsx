@@ -44,7 +44,7 @@ export const Participant = (props) => {
         )}
         <div className="text-white absolute bottom-3 left-3">
           {currentParticipant.name}
-          {currentUser ? "(You)" : ""}
+          {currentUser ? " (You)" : ""}
         </div>
       </Card>
     </div>
