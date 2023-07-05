@@ -12,6 +12,11 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  .inv-cam {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
 }
 
 body {

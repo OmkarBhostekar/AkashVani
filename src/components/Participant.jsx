@@ -22,7 +22,7 @@ export const Participant = (props) => {
       <Card>
         <video
           ref={videoRef}
-          className="bg-[#353b48] h-full w-full relative rounded-xl object-cover"
+          className="bg-[#353b48] h-full w-full relative rounded-xl object-cover inv-cam"
           id={`participantVideo${curentIndex}`}
           autoPlay
           playsInline

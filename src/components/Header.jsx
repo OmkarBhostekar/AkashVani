@@ -9,13 +9,9 @@ import {
 const Header = () => {
   return (
     <div className="flex w-screen justify-between p-[20px]">
-      <div className="flex items-center">
-        <img
-          src="https://www.gstatic.com/meet/google_meet_horizontal_wordmark_2020q4_2x_icon_124_40_292e71bcb52a56e2a9005164118f183b.png"
-          alt=""
-          className="h-100 w-[124px]"
-        />
-        <span className="text-[22px] pl-2 pb-1 text-[#5f6368]">Meet</span>
+      <div className="flex items-center justify-center">
+        <img src="/logo_heyu.svg" alt="" className="h-14" />
+        <span className="text-[25px] pl-3 text-onprimary">HeyU</span>
       </div>
       <div className="flex items-center">
         <FontAwesomeIcon

@@ -34,8 +34,8 @@ const HomeScreen = () => {
               Premium video meetings. Now free for everyone.
             </h2>
             <p className="text-[18px] font-light mt-4 text-center">
-              We re-engineered the service we built for secure business
-              meetings, Google Meet, to make it free and available for all.
+              No need to sign up or create an account. Just start <br />a
+              meeting and share the link. That's it.
             </p>
             <div className="m-10 flex items-center justify-around">
               <button
