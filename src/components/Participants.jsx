@@ -61,6 +61,7 @@ const Participants = (props) => {
         currentParticipant={currentParticipant}
         curentIndex={curentIndex}
         hideVideo={screenPresenter && screenPresenter !== element}
+        isScreenSharing={screenPresenter}
         showAvatar={
           !currentParticipant.video &&
           !currentParticipant.screen &&
@@ -84,6 +85,7 @@ const Participants = (props) => {
         curentIndex={participantKey.length}
         hideVideo={screenPresenter && !currentUser.screen}
         videoRef={videoRef}
+        isScreenSharing={screenPresenter}
         showAvatar={currentUser && !currentUser.video && !currentUser.screen}
         currentUser={true}
       />

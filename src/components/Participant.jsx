@@ -22,7 +22,9 @@ export const Participant = (props) => {
       <Card>
         <video
           ref={videoRef}
-          className="bg-[#353b48] h-full w-full relative rounded-xl object-cover inv-cam"
+          className={`bg-[#353b48] h-full w-full relative rounded-xl object-cover ${
+            props.isScreenSharing ? "" : "inv-cam"
+          }`}
           id={`participantVideo${curentIndex}`}
           autoPlay
           playsInline
